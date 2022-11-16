@@ -1,0 +1,29 @@
+{
+  "name": "@ota-meshi/site-kit-monaco-editor-svelte",
+  "version": "0.1.0",
+  "description": "",
+  "main": "MonacoEditor.svelte",
+  "type": "module",
+  "files": [
+    "MonacoEditor.svelte"
+  ],
+  "scripts": {
+    "test": "svelte-check --tsconfig ../../tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/site-kit.git"
+  },
+  "author": "Yosuke Ota (https://github.com/ota-meshi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/site-kit/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/site-kit#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@ota-meshi/site-kit-monaco-editor": "^0.1.0"
+  }
+}
