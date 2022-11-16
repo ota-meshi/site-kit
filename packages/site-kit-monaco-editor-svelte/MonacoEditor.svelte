@@ -77,9 +77,7 @@
   const loadingMonaco = loadMonacoEditor();
   const starting = appStarting;
 
-  $: loading = Promise.all([waiting, loadingMonaco, starting]).then(() =>
-    console.log("start")
-  );
+  $: loading = Promise.all([waiting, loadingMonaco, starting]);
   $: setLeftValue(code);
   $: setRightValue(rightCode);
   $: setLeftMarkers(markers);
