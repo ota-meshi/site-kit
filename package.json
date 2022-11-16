@@ -11,7 +11,7 @@
     "lint": "eslint . .github .changeset .vscode",
     "format": "npm run lint -- --fix",
     "prerelease": "npm run build",
-    "release": "npx changeset publish"
+    "release": "changeset publish"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,8 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.25.2",
     "@ota-meshi/eslint-plugin": "^0.13.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
