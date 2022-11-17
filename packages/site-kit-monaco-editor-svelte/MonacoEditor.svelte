@@ -171,21 +171,21 @@
 {#await loading}
   {#if started}
     <div
-      class="eslint-editor-monaco-root eslint-editor-monaco-root--wait"
+      class="site-kit-monaco-root site-kit-monaco-root--wait"
       in:loadingTypewriter
     />
   {/if}
 {:then}
-  <div bind:this={rootElement} class="eslint-editor-monaco-root" />
+  <div bind:this={rootElement} class="site-kit-monaco-root" />
 {/await}
 
 <style>
-  .eslint-editor-monaco-root {
+  .site-kit-monaco-root {
     width: 100%;
     height: 100%;
   }
 
-  .eslint-editor-monaco-root--wait {
+  .site-kit-monaco-root--wait {
     color: #9cdcfe;
     border: 1px solid #cfd4db;
     background-color: #282c34;
