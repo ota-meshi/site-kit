@@ -5,6 +5,7 @@
     "typescript",
     "typescriptreact",
     "svelte",
+    "vue",
     "json",
     "jsonc",
     "yaml",

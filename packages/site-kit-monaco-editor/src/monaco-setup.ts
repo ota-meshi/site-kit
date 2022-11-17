@@ -20,6 +20,7 @@ export type MonacoEditorResult = {
   setLeftMarkers: (markers: MonacoEditor.IMarkerData[]) => void;
   setRightMarkers: (markers: MonacoEditor.IMarkerData[]) => void;
   getLeftEditor: () => MonacoEditor.IStandaloneCodeEditor;
+  getRightEditor: () => MonacoEditor.IStandaloneCodeEditor | null;
   disposeEditor: () => void;
   registerCodeActionProvider: (provideCodeActions: ProvideCodeActions) => void;
 };
@@ -125,6 +126,7 @@ export async function setupMonacoEditor({
         void updateMarkers(rightEditor, markers);
       },
       getLeftEditor: () => leftEditor,
+      getRightEditor: () => rightEditor,
 
       registerCodeActionProvider: registerCodeActionProvider.register,
       disposeEditor: () => {
@@ -182,6 +184,7 @@ export async function setupMonacoEditor({
       /* noop */
     },
     getLeftEditor: () => standaloneEditor,
+    getRightEditor: () => null,
 
     registerCodeActionProvider: registerCodeActionProvider.register,
     disposeEditor: () => {

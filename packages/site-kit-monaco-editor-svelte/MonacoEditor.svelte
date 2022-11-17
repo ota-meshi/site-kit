@@ -65,6 +65,9 @@
   let getLeftEditor: () => MonacoEditor.IStandaloneCodeEditor | null = () =>
     null;
   // eslint-disable-next-line func-style -- variable
+  let getRightEditor: () => MonacoEditor.IStandaloneCodeEditor | null = () =>
+    null;
+  // eslint-disable-next-line func-style -- variable
   let disposeEditor: () => void = () => {
     // init
   };
@@ -95,6 +98,7 @@
         setLeftMarkers,
         setLeftValue,
         setModelLanguage,
+        getRightEditor,
         setRightMarkers,
         setRightValue,
         disposeEditor,
@@ -153,6 +157,17 @@
       leftEditor.revealLineInCenter(loc.start.line);
     }
   }
+
+  function getLeftEditorExport(): MonacoEditor.IStandaloneCodeEditor | null {
+    return getLeftEditor();
+  }
+  function getRightEditorExport(): MonacoEditor.IStandaloneCodeEditor | null {
+    return getRightEditor();
+  }
+  export {
+    getLeftEditorExport as getLeftEditor,
+    getRightEditorExport as getRightEditor,
+  };
 
   function loadingTypewriter(node: HTMLElement, _opt?: any): TransitionConfig {
     const text = "Loading...";
