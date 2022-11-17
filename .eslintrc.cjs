@@ -24,6 +24,27 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["*.vue"],
+      plugins: ["@typescript-eslint"],
+      extends: [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@ota-meshi/+typescript",
+        "plugin:@ota-meshi/+vue3",
+        "plugin:@ota-meshi/+prettier",
+      ],
+      parser: "vue-eslint-parser",
+      parserOptions: {
+        parser: "typescript-eslint-parser-for-extra-files",
+        project: ["./tsconfig.json"],
+      },
+      rules: {
+        "no-shadow": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+      },
+    },
+    {
       files: ["*.svelte"],
       plugins: ["@typescript-eslint"],
       extends: [
@@ -35,6 +56,7 @@ module.exports = {
       parser: "svelte-eslint-parser",
       parserOptions: {
         parser: "typescript-eslint-parser-for-extra-files",
+        project: ["./tsconfig.json"],
       },
       rules: {
         "no-shadow": "off",
