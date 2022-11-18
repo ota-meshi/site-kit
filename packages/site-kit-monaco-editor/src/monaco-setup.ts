@@ -4,8 +4,8 @@ import type {
   MonacoEditorLanguages,
   MonacoEditorRange,
   CancellationToken,
-} from ".";
-import { loadMonacoEditor } from "./monaco-loader";
+} from "./types.js";
+import { loadMonacoEditor } from "./monaco-loader.js";
 
 export type ProvideCodeActions = (
   model: MonacoEditor.ITextModel,

@@ -1,9 +1,10 @@
-import type { IMonarchLanguage, Monaco } from "./types";
+import type { IMonarchLanguage, Monaco } from "./types.js";
 
 export function setupTomlLanguage(monaco: Monaco): void {
   monaco.languages.register({ id: "toml" });
   monaco.languages.setMonarchTokensProvider("toml", loadTomlLanguage());
 }
-export function loadTomlLanguage(): Promise<IMonarchLanguage> {
-  return import("./languages/toml").then((m) => m.language);
+export async function loadTomlLanguage(): Promise<IMonarchLanguage> {
+  const { language } = await import("./languages/toml.js");
+  return language;
 }
