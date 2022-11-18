@@ -1,4 +1,4 @@
-import type { Monaco } from "./types";
+import type { Monaco } from "./types.js";
 
 declare let MONACO_EDITOR_VERSION: string | undefined;
 
@@ -66,6 +66,8 @@ export function loadMonacoEditor(): Promise<Monaco> {
   return (editorLoaded = (async () => {
     const monaco: Monaco = await loadModuleFromMonaco("vs/editor/editor.main");
 
+    setupEnhancedLanguages(monaco);
+
     return monaco;
   })());
 }
@@ -79,5 +81,32 @@ export async function loadModuleFromMonaco<T>(moduleName: string): Promise<T> {
         resolve(r);
       });
     }
+  });
+}
+
+function setupEnhancedLanguages(monaco: Monaco) {
+  monaco.languages.register({ id: "svelte" });
+  monaco.languages.registerTokensProviderFactory("svelte", {
+    async create() {
+      const url =
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/svelte";
+      type Lang =
+        // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
+        typeof import("@ota-meshi/site-kit-monarch-syntaxes/svelte");
+      const language = (await import(url)) as Lang;
+      return language.loadSvelteLanguage();
+    },
+  });
+  monaco.languages.register({ id: "toml" });
+  monaco.languages.registerTokensProviderFactory("toml", {
+    async create() {
+      const url =
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/toml";
+      type Lang =
+        // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
+        typeof import("@ota-meshi/site-kit-monarch-syntaxes/toml");
+      const language = (await import(url)) as Lang;
+      return language.loadTomlLanguage();
+    },
   });
 }

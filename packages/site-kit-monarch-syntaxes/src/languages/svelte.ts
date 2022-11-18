@@ -1,4 +1,4 @@
-import type { IMonarchLanguage } from "../types";
+import type { IMonarchLanguage } from "../types.js";
 export const language: IMonarchLanguage = {
   defaultToken: "",
   tokenPostfix: ".html",

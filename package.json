@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ota-meshi/site-kit#readme",
   "workspaces": [
+    "packages/site-kit-monarch-syntaxes",
     "packages/site-kit-monaco-editor",
     "packages/*"
   ],

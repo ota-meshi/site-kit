@@ -1,9 +1,10 @@
-import type { IMonarchLanguage, Monaco } from "./types";
+import type { IMonarchLanguage, Monaco } from "./types.js";
 
 export function setupSvelteLanguage(monaco: Monaco): void {
   monaco.languages.register({ id: "svelte" });
   monaco.languages.setMonarchTokensProvider("svelte", loadSvelteLanguage());
 }
-export function loadSvelteLanguage(): Promise<IMonarchLanguage> {
-  return import("./languages/svelte").then((m) => m.language);
+export async function loadSvelteLanguage(): Promise<IMonarchLanguage> {
+  const { language } = await import("./languages/svelte.js");
+  return language;
 }
