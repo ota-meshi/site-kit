@@ -4,5 +4,6 @@
     "noEmit": false,
     "declaration": true,
     "emitDeclarationOnly": true
-  }
+  },
+  "exclude": ["MonacoEditor.vue.d.ts"]
 }
