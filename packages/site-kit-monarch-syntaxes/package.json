@@ -3,12 +3,23 @@
   "version": "0.0.0",
   "description": "",
   "type": "module",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/index.js",
       "require": "./lib/index.cjs",
       "types": "./lib/index.d.ts"
+    },
+    "./svelte": {
+      "import": "./lib/svelte.js",
+      "require": "./lib/svelte.cjs",
+      "types": "./lib/svelte.d.ts"
+    },
+    "./toml": {
+      "import": "./lib/toml.js",
+      "require": "./lib/toml.cjs",
+      "types": "./lib/toml.d.ts"
     },
     "./package.json": "./package.json"
   },
