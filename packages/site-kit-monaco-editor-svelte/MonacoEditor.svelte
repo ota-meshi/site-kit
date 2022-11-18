@@ -75,7 +75,7 @@
   ) => void = () => {
     // init
   };
-  let loadingMonaco = Promise.resolve();
+  let loadingMonaco = Promise.resolve<unknown>(null);
 
   $: loading = Promise.all([waiting, loadingMonaco]);
   $: setLeftValue(code);
