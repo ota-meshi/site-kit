@@ -1,15 +1,33 @@
 import type { IMonarchLanguage } from "../types.js";
 export const language: IMonarchLanguage = {
   defaultToken: "",
-  tokenPostfix: ".svelte",
-  ignoreCase: true,
+  tokenPostfix: ".astro",
+  ignoreCase: false,
+
+  // non matched elements
+  empty: [
+    "area",
+    "base",
+    "basefont",
+    "br",
+    "col",
+    "frame",
+    "hr",
+    "img",
+    "input",
+    "isindex",
+    "link",
+    "meta",
+    "param",
+  ],
 
   // The main tokenizer for our languages
   tokenizer: {
     root: [
       [/<!DOCTYPE/, "metatag", "@doctype"],
       [/<!--/, "comment", "@comment"],
-      [/\{/, "delimiter", "@svelteMustache"],
+      [/^---/, "comment", "@frontmatter"],
+      [/\{/, "", "@expression"],
       [
         /(<)((?:[\w-]+:)?[\w-]+)(\s*)(\/>)/,
         ["delimiter", "tag", "", "delimiter"],
@@ -34,48 +52,45 @@ export const language: IMonarchLanguage = {
       [/[^<{]+/, ""], // text
     ],
 
-    svelteMustache: [
-      [/[\t\n\r ]+/, ""], // whitespace
-      [/(:)(else if)/, ["delimiter.svelte", "keyword.flow"]],
-      [/([#/:@])([^\s}]+)/, ["delimiter.svelte", "keyword.flow"]],
-      [/\}/, "delimiter", "@pop"],
-      [/\{/, "delimiter.bracket", "@svelteMustacheInBrackets"],
-      [
-        /[^{}]/,
-        {
-          token: "@rematch",
-          next: "@svelteScriptEmbedded",
-          nextEmbedded: "text/javascript",
-        },
-      ],
-    ],
-    svelteMustacheInBrackets: [
-      [/\}/, "delimiter.bracket", "@pop"],
-      [/\{/, "delimiter.bracket", "@push"],
-      [
-        /[^{}]/,
-        {
-          token: "@rematch",
-          next: "@svelteScriptEmbedded",
-          nextEmbedded: "text/javascript",
-        },
-      ],
-    ],
-    svelteScriptEmbedded: [
-      [
-        /[{}]/,
-        {
-          token: "@rematch",
-          next: "@pop",
-          nextEmbedded: "@pop",
-        },
-      ],
-      [/[^{}]+/, ""],
-    ],
-
     doctype: [
       [/[^>]+/, "metatag.content"],
       [/>/, "metatag", "@pop"],
+    ],
+
+    frontmatter: [
+      [/^---/, { token: "comment", next: "@pop", nextEmbedded: "@pop" }],
+      [
+        /./,
+        {
+          token: "@rematch",
+          next: "@frontmatterEmbedded",
+          nextEmbedded: "text/javascript",
+        },
+      ],
+    ],
+
+    frontmatterEmbedded: [
+      [/[^-]+|-[^-]{2,}/, { token: "@rematch", next: "@pop" }],
+      [/^---/, { token: "comment", next: "@root", nextEmbedded: "@pop" }],
+    ],
+
+    expression: [
+      [
+        /[^<{}]/,
+        {
+          token: "@rematch",
+          next: "@expressionEmbedded",
+          nextEmbedded: "text/javascript",
+        },
+      ],
+      [/</, { token: "@rematch", next: "@pop" }],
+      [/\}/, { token: "", next: "@pop" }],
+    ],
+
+    expressionEmbedded: [
+      [/\{/, "@rematch", "@push"],
+      [/</, { token: "@rematch", next: "@pop", nextEmbedded: "@pop" }],
+      [/\}/, { token: "@rematch", next: "@pop", nextEmbedded: "@pop" }],
     ],
 
     comment: [
@@ -86,50 +101,11 @@ export const language: IMonarchLanguage = {
 
     otherTag: [
       [/\/?>/, "delimiter", "@pop"],
-      [
-        /([=])(["'])/,
-        [
-          { token: "delimiter" },
-          {
-            token: "attribute.value",
-            next: "@attributeValue.$2",
-          },
-        ],
-      ],
-      [
-        /([=])(\s+)(["'])/,
-        [
-          { token: "delimiter" },
-          { token: "" },
-          {
-            token: "attribute.value",
-            next: "@attributeValue.$3",
-          },
-        ],
-      ],
-      [/[=]\s*\{/, "delimiter", "@svelteMustache"],
       [/"([^"]*)"/, "attribute.value"],
       [/'([^']*)'/, "attribute.value"],
-      [
-        /(\w+)(:)([\w-]+)/,
-        ["keyword.flow", "delimiter.svelte", "attribute.name"],
-      ],
       [/[\w-]+/, "attribute.name"],
       [/[=]/, "delimiter"],
       [/[\t\n\r ]+/, ""], // whitespace
-    ],
-
-    attributeValue: [
-      [
-        /[\s\S]/,
-        {
-          cases: {
-            "$0==$S2": { token: "attribute.value", next: "@pop" },
-            "$0=={": { token: "delimiter", next: "@svelteMustache" },
-            "@default": { token: "attribute.value" },
-          },
-        },
-      ],
     ],
 
     // -- BEGIN <script> tags handling
@@ -179,17 +155,11 @@ export const language: IMonarchLanguage = {
     scriptAfterTypeEquals: [
       [
         /"([^"]*)"/,
-        {
-          token: "attribute.value",
-          switchTo: "@scriptWithCustomType.$1",
-        },
+        { token: "attribute.value", switchTo: "@scriptWithCustomType.$1" },
       ],
       [
         /'([^']*)'/,
-        {
-          token: "attribute.value",
-          switchTo: "@scriptWithCustomType.$1",
-        },
+        { token: "attribute.value", switchTo: "@scriptWithCustomType.$1" },
       ],
       [
         />/,
@@ -275,17 +245,11 @@ export const language: IMonarchLanguage = {
     styleAfterTypeEquals: [
       [
         /"([^"]*)"/,
-        {
-          token: "attribute.value",
-          switchTo: "@styleWithCustomType.$1",
-        },
+        { token: "attribute.value", switchTo: "@styleWithCustomType.$1" },
       ],
       [
         /'([^']*)'/,
-        {
-          token: "attribute.value",
-          switchTo: "@styleWithCustomType.$1",
-        },
+        { token: "attribute.value", switchTo: "@styleWithCustomType.$1" },
       ],
       [
         />/,
@@ -303,11 +267,7 @@ export const language: IMonarchLanguage = {
     styleWithCustomType: [
       [
         />/,
-        {
-          token: "delimiter",
-          next: "@styleEmbedded.$S2",
-          nextEmbedded: "$S2",
-        },
+        { token: "delimiter", next: "@styleEmbedded.$S2", nextEmbedded: "$S2" },
       ],
       [/"([^"]*)"/, "attribute.value"],
       [/'([^']*)'/, "attribute.value"],

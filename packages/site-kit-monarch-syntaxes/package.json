@@ -11,6 +11,11 @@
       "require": "./lib/index.cjs",
       "types": "./lib/index.d.ts"
     },
+    "./astro": {
+      "import": "./lib/astro.js",
+      "require": "./lib/astro.cjs",
+      "types": "./lib/astro.d.ts"
+    },
     "./svelte": {
       "import": "./lib/svelte.js",
       "require": "./lib/svelte.cjs",
