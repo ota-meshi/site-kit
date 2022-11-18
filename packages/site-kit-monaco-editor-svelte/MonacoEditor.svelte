@@ -1,8 +1,6 @@
 <script lang="ts" context="module">
   import type { TransitionConfig } from "svelte/transition";
 
-  const appStarting = new Promise((resolve) => setTimeout(resolve, 300));
-
   export type SourceLocation = {
     start: {
       line: number;
@@ -77,10 +75,9 @@
   ) => void = () => {
     // init
   };
-  const loadingMonaco = loadMonacoEditor();
-  const starting = appStarting;
+  let loadingMonaco = Promise.resolve();
 
-  $: loading = Promise.all([waiting, loadingMonaco, starting]);
+  $: loading = Promise.all([waiting, loadingMonaco]);
   $: setLeftValue(code);
   $: setRightValue(rightCode);
   $: setLeftMarkers(markers);
@@ -139,6 +136,7 @@
     disposeEditor();
   }
   onMount(() => {
+    loadingMonaco = loadMonacoEditor();
     started = true;
   });
   onDestroy(() => {
