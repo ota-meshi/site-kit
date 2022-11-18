@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.2.0
+
+### Minor Changes
+
+- [#13](https://github.com/ota-meshi/site-kit/pull/13) [`7107692`](https://github.com/ota-meshi/site-kit/commit/710769237fcfa3b69b3deba465fe412a5e4b8b4a) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: support for svelte and toml syntax
+
 ## 0.1.1
 
 ### Patch Changes
