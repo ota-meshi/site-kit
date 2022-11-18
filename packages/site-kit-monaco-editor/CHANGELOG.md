@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.2.1
+
+### Patch Changes
+
+- [#15](https://github.com/ota-meshi/site-kit/pull/15) [`9ce5e3a`](https://github.com/ota-meshi/site-kit/commit/9ce5e3ac164834b9175bc7ddd0f94ea18c1656ff) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: avoid transpile dynamic import
+
 ## 0.2.0
 
 ### Minor Changes
