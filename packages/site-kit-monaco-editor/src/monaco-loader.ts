@@ -18,11 +18,6 @@ async function setupMonaco(): Promise<void> {
       paths: {
         vs: monacoScript.src.replace(/\/vs\/.*$/u, "/vs"),
       },
-      "vs/nls": {
-        availableLanguages: {
-          "*": "ja",
-        },
-      },
     });
   }
 }
@@ -87,6 +82,18 @@ export async function loadModuleFromMonaco<T>(moduleName: string): Promise<T> {
 function setupEnhancedLanguages(monaco: Monaco) {
   // eslint-disable-next-line @typescript-eslint/no-implied-eval -- avoid transpile
   const dynamicImport = new Function("file", "return import(file)");
+  monaco.languages.register({ id: "astro" });
+  monaco.languages.registerTokensProviderFactory("astro", {
+    async create() {
+      type Lang =
+        // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
+        typeof import("@ota-meshi/site-kit-monarch-syntaxes/astro");
+      const language = (await dynamicImport(
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/astro"
+      )) as Lang;
+      return language.loadAstroLanguage();
+    },
+  });
   monaco.languages.register({ id: "svelte" });
   monaco.languages.registerTokensProviderFactory("svelte", {
     async create() {
