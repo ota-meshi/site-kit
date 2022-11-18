@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.2.2
+
+### Patch Changes
+
+- [#17](https://github.com/ota-meshi/site-kit/pull/17) [`9378954`](https://github.com/ota-meshi/site-kit/commit/937895482ac638cb9b2124ff43164c03b5ed94d7) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: support for astro syntax
+
 ## 0.2.1
 
 ### Patch Changes
