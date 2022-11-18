@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor-svelte
 
+## 0.1.2
+
+### Patch Changes
+
+- [#9](https://github.com/ota-meshi/site-kit/pull/9) [`82d9d04`](https://github.com/ota-meshi/site-kit/commit/82d9d04bdd2b77055ef3d04c6f9dba0025307cb4) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: improve loading monaco
+
 ## 0.1.1
 
 ### Patch Changes

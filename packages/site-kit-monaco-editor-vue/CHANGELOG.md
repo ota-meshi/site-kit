@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor-vue
 
+## 0.1.1
+
+### Patch Changes
+
+- [#8](https://github.com/ota-meshi/site-kit/pull/8) [`d45f4e7`](https://github.com/ota-meshi/site-kit/commit/d45f4e7935eac91ccb319e39b64da8c6804f7e69) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: provide d.ts
+
 ## 0.1.0
 
 ### Minor Changes
