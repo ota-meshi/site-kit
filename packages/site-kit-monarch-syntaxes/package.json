@@ -1,0 +1,46 @@
+{
+  "name": "@ota-meshi/site-kit-monarch-syntaxes",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./svelte": {
+      "import": "./lib/svelte.js",
+      "require": "./lib/svelte.cjs",
+      "types": "./lib/svelte.d.ts"
+    },
+    "./toml": {
+      "import": "./lib/toml.js",
+      "require": "./lib/toml.cjs",
+      "types": "./lib/toml.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "tsc",
+    "build": "tsup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/site-kit.git"
+  },
+  "author": "Yosuke Ota (https://github.com/ota-meshi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/site-kit/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/site-kit#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}
