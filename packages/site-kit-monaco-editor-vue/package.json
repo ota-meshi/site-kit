@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "description": "",
   "main": "MonacoEditor.vue",
+  "types": "MonacoEditor.vue.d.ts",
   "type": "module",
   "files": [
-    "MonacoEditor.vue"
+    "MonacoEditor.vue",
+    "MonacoEditor.vue.d.ts"
   ],
   "scripts": {
-    "test": "vue-tsc --project ../../tsconfig.json"
+    "test": "vue-tsc --project ../../tsconfig.json",
+    "build": "vue-tsc --project ./tsconfig.json"
   },
   "repository": {
     "type": "git",

@@ -11,4 +11,5 @@ yarn.lock
 ## Repo
 
 /packages/site-kit-monaco-editor/lib
+/packages/site-kit-monaco-editor-vue/MonacoEditor.vue.d.ts
 
