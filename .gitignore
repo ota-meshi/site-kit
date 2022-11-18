@@ -109,4 +109,5 @@ dist
 !/.vscode
 !/.changeset
 /packages/site-kit-monaco-editor/lib
+/packages/site-kit-monarch-syntaxes/lib
 /packages/site-kit-monaco-editor-vue/MonacoEditor.vue.d.ts
