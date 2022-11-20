@@ -17,7 +17,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "tsc src/*.* --noEmit",
+    "test": "tsc",
     "build": "tsup"
   },
   "repository": {
