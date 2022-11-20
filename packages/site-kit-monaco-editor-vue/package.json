@@ -2,16 +2,20 @@
   "name": "@ota-meshi/site-kit-monaco-editor-vue",
   "version": "0.1.2",
   "description": "",
-  "main": "MonacoEditor.vue",
+  "main": "MonacoEditor.js",
   "types": "MonacoEditor.vue.d.ts",
   "type": "module",
   "files": [
+    "MonacoEditor.js",
     "MonacoEditor.vue",
     "MonacoEditor.vue.d.ts"
   ],
   "scripts": {
-    "test": "vue-tsc --project ../../tsconfig.json",
-    "build": "vue-tsc --project ./tsconfig.json"
+    "test": "vue-tsc --project ./tsconfig.json",
+    "build": "npm run build:vue3 && npm run build:vue2 && npm run build:dts",
+    "build:vue3": "vite build --config vite.config-for-vue3.ts",
+    "build:vue2": "vite build --config vite.config-for-vue2.ts",
+    "build:dts": "vue-tsc --project ./tsconfig.json"
   },
   "repository": {
     "type": "git",
