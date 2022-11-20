@@ -7,6 +7,7 @@
   "type": "module",
   "files": [
     "MonacoEditor.js",
+    "MonacoEditor.vue2.js",
     "MonacoEditor.vue",
     "MonacoEditor.vue.d.ts"
   ],
