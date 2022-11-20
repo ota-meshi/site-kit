@@ -8,7 +8,7 @@
     "MonacoEditor.svelte"
   ],
   "scripts": {
-    "test": "svelte-check --tsconfig ../../tsconfig.json"
+    "test": "svelte-check --tsconfig ./tsconfig.json"
   },
   "repository": {
     "type": "git",

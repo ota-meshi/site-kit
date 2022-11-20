@@ -4,7 +4,9 @@
   "description": "",
   "private": true,
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "tsc --project ./tsconfig.json"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ota-meshi/site-kit.git"
