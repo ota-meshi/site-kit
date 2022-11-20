@@ -5,5 +5,5 @@
     "declaration": true,
     "emitDeclarationOnly": true
   },
-  "exclude": ["MonacoEditor.vue.d.ts"]
+  "include": ["MonacoEditor.vue"]
 }

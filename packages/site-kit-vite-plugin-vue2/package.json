@@ -1,14 +1,11 @@
 {
-  "name": "@ota-meshi/site-kit-monaco-editor-svelte",
-  "version": "0.1.3",
+  "name": "@ota-meshi/site-kit-vite-plugin-vue2",
+  "version": "0.0.0",
   "description": "",
-  "main": "MonacoEditor.svelte",
+  "private": true,
   "type": "module",
-  "files": [
-    "MonacoEditor.svelte"
-  ],
   "scripts": {
-    "test": "svelte-check --tsconfig ./tsconfig.json"
+    "test": "tsc --project ./tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -24,6 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ota-meshi/site-kit-monaco-editor": "^0.2.0"
+    "@vitejs/plugin-vue2": "^2.0.1",
+    "vue": "^2.7"
   }
 }

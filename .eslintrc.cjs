@@ -66,7 +66,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.ts"],
+      files: ["*.ts", "*.mts"],
       plugins: ["@typescript-eslint"],
       extends: [
         "plugin:@typescript-eslint/recommended",

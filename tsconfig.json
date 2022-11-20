@@ -17,5 +17,10 @@
     "moduleResolution": "NodeNext",
     "module": "esnext",
     "target": "esnext"
-  }
+  },
+  "exclude": [
+    "packages/site-kit-monaco-editor-vue/MonacoEditor.vue.d.ts",
+    "packages/site-kit-monaco-editor-vue/MonacoEditor.js",
+    "packages/site-kit-monaco-editor-vue/MonacoEditor.vue2.js"
+  ]
 }
