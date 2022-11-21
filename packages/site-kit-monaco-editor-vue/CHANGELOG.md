@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor-vue
 
+## 0.2.0
+
+### Minor Changes
+
+- [#19](https://github.com/ota-meshi/site-kit/pull/19) [`cc26c97`](https://github.com/ota-meshi/site-kit/commit/cc26c97aebe2f11db63d6a05040d52c661262490) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: pre-build vue component
+
 ## 0.1.2
 
 ### Patch Changes
