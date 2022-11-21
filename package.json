@@ -26,6 +26,9 @@
   "workspaces": [
     "packages/site-kit-monarch-syntaxes",
     "packages/site-kit-monaco-editor",
+    "packages/site-kit-monaco-editor-svelte",
+    "packages/site-kit-monaco-editor-vue",
+    "packages/site-kit-eslint-editor-vue",
     "packages/*"
   ],
   "devDependencies": {
