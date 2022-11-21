@@ -15,3 +15,6 @@ yarn.lock
 /packages/site-kit-monaco-editor-vue/MonacoEditor.vue.d.ts
 /packages/site-kit-monaco-editor-vue/MonacoEditor.js
 /packages/site-kit-monaco-editor-vue/MonacoEditor.vue2.js
+/packages/site-kit-eslint-editor-vue/ESLintEditor.vue.d.ts
+/packages/site-kit-eslint-editor-vue/ESLintEditor.js
+/packages/site-kit-eslint-editor-vue/ESLintEditor.vue2.js
