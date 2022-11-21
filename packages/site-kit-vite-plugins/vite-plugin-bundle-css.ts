@@ -1,6 +1,6 @@
 import type { Plugin as VitePlugin } from "vite";
 
-export default function bundleCssPlugin({
+export function bundleCssPlugin({
   fileName,
 }: {
   fileName: string;

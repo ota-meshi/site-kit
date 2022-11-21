@@ -1,0 +1,24 @@
+{
+  "name": "@ota-meshi/site-kit-vite-plugins",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc --project ./tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/site-kit.git"
+  },
+  "author": "Yosuke Ota (https://github.com/ota-meshi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/site-kit/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/site-kit#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

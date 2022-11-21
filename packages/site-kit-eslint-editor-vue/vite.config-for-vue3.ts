@@ -4,16 +4,16 @@ import { defineConfig } from "vite";
 import { bundleCssPlugin } from "../site-kit-vite-plugins/index.js";
 
 export default defineConfig({
-  plugins: [vue(), bundleCssPlugin({ fileName: "MonacoEditor.vue3" })],
+  plugins: [vue(), bundleCssPlugin({ fileName: "ESLintEditor.vue3" })],
   build: {
     outDir: __dirname,
     cssCodeSplit: false,
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, "MonacoEditor.vue"),
-      name: "MonacoEditor",
+      entry: resolve(__dirname, "ESLintEditor.vue"),
+      name: "ESLintEditor",
       // the proper extensions will be added
-      fileName: "MonacoEditor.vue3",
+      fileName: "ESLintEditor.vue3",
       formats: ["es"],
     },
     rollupOptions: {

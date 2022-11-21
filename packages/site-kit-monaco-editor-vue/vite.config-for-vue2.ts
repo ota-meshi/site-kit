@@ -1,7 +1,7 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import { vue2Plugin } from "../site-kit-vite-plugin-vue2/vite-config-builder.js";
-import bundleCssPlugin from "./vite-plugins/bundle-css.js";
+import { bundleCssPlugin } from "../site-kit-vite-plugins/index.js";
 
 export default defineConfig({
   plugins: [vue2Plugin(), bundleCssPlugin({ fileName: "MonacoEditor.vue2" })],
