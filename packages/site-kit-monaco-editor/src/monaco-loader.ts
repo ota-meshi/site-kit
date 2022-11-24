@@ -94,6 +94,18 @@ function setupEnhancedLanguages(monaco: Monaco) {
       return language.loadAstroLanguage();
     },
   });
+  monaco.languages.register({ id: "stylus", aliases: ["styl"] });
+  monaco.languages.registerTokensProviderFactory("stylus", {
+    async create() {
+      type Lang =
+        // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
+        typeof import("@ota-meshi/site-kit-monarch-syntaxes/stylus");
+      const language = (await dynamicImport(
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/stylus"
+      )) as Lang;
+      return language.loadStylusLanguage();
+    },
+  });
   monaco.languages.register({ id: "svelte" });
   monaco.languages.registerTokensProviderFactory("svelte", {
     async create() {
