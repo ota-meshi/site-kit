@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.2.3
+
+### Patch Changes
+
+- [#22](https://github.com/ota-meshi/site-kit/pull/22) [`a033104`](https://github.com/ota-meshi/site-kit/commit/a03310427251361e088356e4b7e42a52e43d7b00) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: add support for stylus lang
+
 ## 0.2.2
 
 ### Patch Changes
