@@ -16,6 +16,11 @@
       "require": "./lib/astro.cjs",
       "types": "./lib/astro.d.ts"
     },
+    "./stylus": {
+      "import": "./lib/stylus.js",
+      "require": "./lib/stylus.cjs",
+      "types": "./lib/stylus.d.ts"
+    },
     "./svelte": {
       "import": "./lib/svelte.js",
       "require": "./lib/svelte.cjs",
