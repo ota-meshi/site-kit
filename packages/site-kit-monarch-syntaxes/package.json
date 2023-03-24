@@ -3,31 +3,31 @@
   "version": "0.1.3",
   "description": "",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "./lib/index.cjs",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.js",
+      "import": "./lib/index.cjs",
       "require": "./lib/index.cjs",
       "types": "./lib/index.d.ts"
     },
     "./astro": {
-      "import": "./lib/astro.js",
+      "import": "./lib/astro.cjs",
       "require": "./lib/astro.cjs",
       "types": "./lib/astro.d.ts"
     },
     "./stylus": {
-      "import": "./lib/stylus.js",
+      "import": "./lib/stylus.cjs",
       "require": "./lib/stylus.cjs",
       "types": "./lib/stylus.d.ts"
     },
     "./svelte": {
-      "import": "./lib/svelte.js",
+      "import": "./lib/svelte.cjs",
       "require": "./lib/svelte.cjs",
       "types": "./lib/svelte.d.ts"
     },
     "./toml": {
-      "import": "./lib/toml.js",
+      "import": "./lib/toml.cjs",
       "require": "./lib/toml.cjs",
       "types": "./lib/toml.d.ts"
     },
@@ -38,7 +38,7 @@
   ],
   "scripts": {
     "test": "tsc --project ./tsconfig.json",
-    "build": "tsup"
+    "build": "unbuild"
   },
   "repository": {
     "type": "git",
