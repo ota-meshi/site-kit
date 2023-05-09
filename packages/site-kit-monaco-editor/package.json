@@ -1,6 +1,6 @@
 {
   "name": "@ota-meshi/site-kit-monaco-editor",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "",
   "type": "module",
   "main": "lib/index.cjs",

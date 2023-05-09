@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monarch-syntaxes
 
+## 0.2.0
+
+### Minor Changes
+
+- [#31](https://github.com/ota-meshi/site-kit/pull/31) [`bf160d0`](https://github.com/ota-meshi/site-kit/commit/bf160d0721ae6252a2fe0401becfd5b61293ab2f) Thanks [@ota-meshi](https://github.com/ota-meshi)! - use unbuild
+
 ## 0.1.3
 
 ### Patch Changes

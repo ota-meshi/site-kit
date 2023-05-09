@@ -1,6 +1,6 @@
 {
   "name": "@ota-meshi/site-kit-eslint-editor-vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "ESLintEditor.vue",
   "types": "ESLintEditor.vue.d.ts",
@@ -32,7 +32,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ota-meshi/site-kit-monaco-editor": "^0.2.0",
-    "@ota-meshi/site-kit-monaco-editor-vue": "^0.2.0"
+    "@ota-meshi/site-kit-monaco-editor": "^0.3.0",
+    "@ota-meshi/site-kit-monaco-editor-vue": "^0.2.1"
   }
 }
