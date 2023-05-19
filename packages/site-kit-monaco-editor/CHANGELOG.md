@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.4.0
+
+### Minor Changes
+
+- [#37](https://github.com/ota-meshi/site-kit/pull/37) [`99c660f`](https://github.com/ota-meshi/site-kit/commit/99c660f3d9f835c5fc3d6f76b6611cc698f039bd) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: update package exports
+
 ## 0.3.0
 
 ### Minor Changes
