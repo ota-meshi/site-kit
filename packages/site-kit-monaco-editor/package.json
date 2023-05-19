@@ -3,13 +3,13 @@
   "version": "0.3.0",
   "description": "",
   "type": "module",
-  "main": "lib/index.cjs",
+  "main": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.cjs",
-      "require": "./lib/index.cjs",
-      "types": "./lib/index.d.ts"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
     },
     "./package.json": "./package.json"
   },

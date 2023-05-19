@@ -3,33 +3,33 @@
   "version": "0.2.0",
   "description": "",
   "type": "module",
-  "main": "./lib/index.cjs",
+  "main": "./lib/index.mjs",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.cjs",
-      "require": "./lib/index.cjs",
-      "types": "./lib/index.d.ts"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
     },
     "./astro": {
-      "import": "./lib/astro.cjs",
-      "require": "./lib/astro.cjs",
-      "types": "./lib/astro.d.ts"
+      "types": "./lib/astro.d.ts",
+      "import": "./lib/astro.mjs",
+      "require": "./lib/astro.cjs"
     },
     "./stylus": {
-      "import": "./lib/stylus.cjs",
-      "require": "./lib/stylus.cjs",
-      "types": "./lib/stylus.d.ts"
+      "types": "./lib/stylus.d.ts",
+      "import": "./lib/stylus.mjs",
+      "require": "./lib/stylus.cjs"
     },
     "./svelte": {
-      "import": "./lib/svelte.cjs",
-      "require": "./lib/svelte.cjs",
-      "types": "./lib/svelte.d.ts"
+      "types": "./lib/svelte.d.ts",
+      "import": "./lib/svelte.mjs",
+      "require": "./lib/svelte.cjs"
     },
     "./toml": {
-      "import": "./lib/toml.cjs",
-      "require": "./lib/toml.cjs",
-      "types": "./lib/toml.d.ts"
+      "types": "./lib/toml.d.ts",
+      "import": "./lib/toml.mjs",
+      "require": "./lib/toml.cjs"
     },
     "./package.json": "./package.json"
   },
