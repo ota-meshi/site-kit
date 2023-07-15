@@ -327,7 +327,8 @@ function lint() {
 
 /** Linter message to monaco editor marker */
 function messageToMarker(message: Linter.LintMessage): TEditor.IMarkerData {
-  const rule = message.ruleId && linterRef.value?.getRules().get(message.ruleId);
+  const rule =
+    message.ruleId && linterRef.value?.getRules().get(message.ruleId);
   const docUrl =
     rule && rule.meta && rule.meta.docs && (rule.meta.docs.url as never);
   const startLineNumber = ensurePositiveInt(message.line, 1);
