@@ -116,7 +116,7 @@ const emit = defineEmits<{
   (event: "update:code", code: string): void;
 }>();
 
-const linter = ref<Linter | null>(null);
+const linterRef = ref<Linter | null>(null);
 const editorValue = ref(props.code);
 const messages = ref<Linter.LintMessage[]>([]);
 const fixedCode = ref(props.code);
@@ -202,13 +202,13 @@ watch(
 
     async function update() {
       const v = toRaw(await props.linter);
-      linter.value = v && markRaw(v);
+      linterRef.value = v && markRaw(v);
       return null;
     }
   },
   { immediate: true }
 );
-watch(linter, () => {
+watch(linterRef, () => {
   invalidate();
 });
 watch(
@@ -264,7 +264,7 @@ function invalidate() {
 /** Execute lint */
 function lint() {
   const { config, filename, preprocess, postprocess } = props;
-  if (linter.value == null) {
+  if (linterRef.value == null) {
     return;
   }
   editorMessageMap.clear();
@@ -277,7 +277,7 @@ function lint() {
   };
   // Lint
   try {
-    messages.value = linter.value.verify(code, config, options);
+    messages.value = linterRef.value.verify(code, config, options);
   } catch (err) {
     messages.value = [
       {
@@ -293,7 +293,7 @@ function lint() {
 
   // Fix
   try {
-    const ret = linter.value.verifyAndFix(code, config, options);
+    const ret = linterRef.value.verifyAndFix(code, config, options);
     fixedCode.value = ret.fixed ? ret.output : code;
     fixedMessages.value = ret.messages;
   } catch (err) {
@@ -327,7 +327,7 @@ function lint() {
 
 /** Linter message to monaco editor marker */
 function messageToMarker(message: Linter.LintMessage): TEditor.IMarkerData {
-  const rule = message.ruleId && linter.value?.getRules().get(message.ruleId);
+  const rule = message.ruleId && linterRef.value?.getRules().get(message.ruleId);
   const docUrl =
     rule && rule.meta && rule.meta.docs && (rule.meta.docs.url as never);
   const startLineNumber = ensurePositiveInt(message.line, 1);
