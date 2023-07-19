@@ -40,13 +40,13 @@ const props = withDefaults(
     rightMarkers: () => [],
     provideCodeActions: null,
     waiting: null,
-  }
+  },
 );
 const emit = defineEmits<{
   (type: "update:modelValue", value: string): void;
   (
     type: "changeCursorPosition",
-    evt: MonacoEditor.ICursorPositionChangedEvent
+    evt: MonacoEditor.ICursorPositionChangedEvent,
   ): void;
   (type: "focusEditorText" | "mountedEditor"): void;
 }>();
@@ -84,7 +84,7 @@ let disposeEditor: () => void = () => {
 };
 // eslint-disable-next-line func-style -- variable
 let registerCodeActionProvider: (
-  provideCodeActions: ProvideCodeActions
+  provideCodeActions: ProvideCodeActions,
 ) => void = () => {
   // init
 };
@@ -103,31 +103,31 @@ watch(
   () => props.modelValue,
   (value) => {
     setLeftValue(value);
-  }
+  },
 );
 watch(
   () => props.rightCode,
   (value) => {
     setRightValue(value);
-  }
+  },
 );
 watch(
   () => props.language,
   (value) => {
     setModelLanguage(value);
-  }
+  },
 );
 watch(
   () => props.markers,
   (value) => {
     setLeftMarkers(value);
-  }
+  },
 );
 watch(
   () => props.rightMarkers,
   (value) => {
     setRightMarkers(value);
-  }
+  },
 );
 watch(
   () => props.provideCodeActions,
@@ -135,14 +135,14 @@ watch(
     if (value) {
       registerCodeActionProvider(value);
     }
-  }
+  },
 );
 
 watch(
   () => props.diffEditor,
   () => {
     void setup();
-  }
+  },
 );
 
 /** setup monaco */

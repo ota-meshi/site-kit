@@ -71,7 +71,7 @@
   };
   // eslint-disable-next-line func-style -- variable
   let registerCodeActionProvider: (
-    provideCodeActions: ProvideCodeActions
+    provideCodeActions: ProvideCodeActions,
   ) => void = () => {
     // init
   };

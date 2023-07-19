@@ -9,7 +9,7 @@ async function setupMonaco(): Promise<void> {
         (script) =>
           script.src &&
           script.src.includes("monaco") &&
-          script.src.includes("vs/loader")
+          script.src.includes("vs/loader"),
       ) || (await appendMonacoEditorScript());
     /* eslint-disable @typescript-eslint/no-unsafe-call -- global Monaco's require */
     // @ts-expect-error -- global Monaco's require
@@ -89,7 +89,7 @@ function setupEnhancedLanguages(monaco: Monaco) {
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/astro");
       const language = (await dynamicImport(
-        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/astro"
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/astro",
       )) as Lang;
       return language.loadAstroLanguage();
     },
@@ -101,7 +101,7 @@ function setupEnhancedLanguages(monaco: Monaco) {
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/stylus");
       const language = (await dynamicImport(
-        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/stylus"
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/stylus",
       )) as Lang;
       return language.loadStylusLanguage();
     },
@@ -113,7 +113,7 @@ function setupEnhancedLanguages(monaco: Monaco) {
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/svelte");
       const language = (await dynamicImport(
-        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/svelte"
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/svelte",
       )) as Lang;
       return language.loadSvelteLanguage();
     },
@@ -125,7 +125,7 @@ function setupEnhancedLanguages(monaco: Monaco) {
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/toml");
       const language = (await dynamicImport(
-        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/toml"
+        "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/toml",
       )) as Lang;
       return language.loadTomlLanguage();
     },
