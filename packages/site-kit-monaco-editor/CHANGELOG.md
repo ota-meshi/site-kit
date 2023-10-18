@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.4.1
+
+### Patch Changes
+
+- [#52](https://github.com/ota-meshi/site-kit/pull/52) [`122745b`](https://github.com/ota-meshi/site-kit/commit/122745bc5a8a3c8cb351a560fa98fbec47d47faa) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: renderSideBySideInlineBreakpoint to 600
+
 ## 0.4.0
 
 ### Minor Changes
