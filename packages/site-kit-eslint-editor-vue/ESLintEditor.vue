@@ -35,7 +35,7 @@ function createQuickfixCodeAction(
   title: string,
   marker: TEditor.IMarkerData,
   model: TEditor.ITextModel,
-  fix: { range: [number, number]; text: string }
+  fix: { range: [number, number]; text: string },
 ): MonacoEditorLanguages.CodeAction {
   const start = model.getPositionAt(fix.range[0]);
   const end = model.getPositionAt(fix.range[1]);
@@ -84,11 +84,11 @@ const props = withDefaults(
     filename?: string;
     preprocess?: (
       text: string,
-      filename: string
+      filename: string,
     ) => (string | Linter.ProcessorFile)[];
     postprocess?: (
       messages: Linter.LintMessage[][],
-      filename: string
+      filename: string,
     ) => Linter.LintMessage[];
     fix?: boolean;
     language?: string;
@@ -101,7 +101,7 @@ const props = withDefaults(
     preprocess: undefined,
     postprocess: undefined,
     language: "javascript",
-  }
+  },
 );
 const emit = defineEmits<{
   (
@@ -111,7 +111,7 @@ const emit = defineEmits<{
       messages: Linter.LintMessage[];
       fixedCode: string;
       fixedMessages: Linter.LintMessage[];
-    }
+    },
   ): void;
   (event: "update:code", code: string): void;
 }>();
@@ -156,8 +156,8 @@ const provideCodeActions = computed((): ProvideCodeActions => {
             `Fix this ${message.ruleId!} problem`,
             marker,
             model,
-            message.fix
-          )
+            message.fix,
+          ),
         );
       }
       if (message.suggestions) {
@@ -167,8 +167,8 @@ const provideCodeActions = computed((): ProvideCodeActions => {
               `${suggestion.desc} (${message.ruleId!})`,
               marker,
               model,
-              suggestion.fix
-            )
+              suggestion.fix,
+            ),
           );
         }
       }
@@ -191,7 +191,7 @@ const rightMarkers = computed(() => {
   return messagesToMarkers(
     editor?.getModel() ?? null,
     fixedMessages.value,
-    true
+    true,
   );
 });
 
@@ -206,7 +206,7 @@ watch(
       return null;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 watch(linterRef, () => {
   invalidate();
@@ -215,7 +215,7 @@ watch(
   () => props.code,
   (value) => {
     editorValue.value = value;
-  }
+  },
 );
 watch(editorValue, () => {
   emit("update:code", editorValue.value);
@@ -229,19 +229,19 @@ watch(
   () => {
     invalidate();
   },
-  { deep: true }
+  { deep: true },
 );
 watch(
   () => props.filename,
   () => {
     invalidate();
-  }
+  },
 );
 watch(
   () => props.fix,
   () => {
     invalidate();
-  }
+  },
 );
 
 /** init */
@@ -356,7 +356,7 @@ function messageToMarker(message: Linter.LintMessage): TEditor.IMarkerData {
 function messagesToMarkers(
   model: TEditor.ITextModel | null,
   messages: Linter.LintMessage[],
-  storeMessageMap: boolean
+  storeMessageMap: boolean,
 ): TEditor.IMarkerData[] {
   if (model) editorMessageMap.delete(model.uri);
   const markers: TEditor.IMarkerData[] = [];

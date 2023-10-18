@@ -11,7 +11,7 @@ export type ProvideCodeActions = (
   model: MonacoEditor.ITextModel,
   range: MonacoEditorRange,
   context: MonacoEditorLanguages.CodeActionContext,
-  token: CancellationToken
+  token: CancellationToken,
 ) => MonacoEditorLanguages.ProviderResult<MonacoEditorLanguages.CodeActionList>;
 export type MonacoEditorResult = {
   setModelLanguage: (language: string) => void;
@@ -41,7 +41,7 @@ export async function setupMonacoEditor({
   listeners?: {
     onChangeValue?: (value: string) => void;
     onDidChangeCursorPosition?: (
-      evt: MonacoEditor.ICursorPositionChangedEvent
+      evt: MonacoEditor.ICursorPositionChangedEvent,
     ) => void;
     onFocus?: () => void;
   };
@@ -78,7 +78,7 @@ export async function setupMonacoEditor({
     const original = monaco.editor.createModel(init.value, language);
     const modified = monaco.editor.createModel(
       init.right?.value || "",
-      language
+      language,
     );
 
     const leftEditor = diffEditor.getOriginalEditor();
@@ -98,7 +98,7 @@ export async function setupMonacoEditor({
 
     const registerCodeActionProvider = buildRegisterCodeActionProvider(
       leftEditor,
-      language
+      language,
     );
 
     const result: MonacoEditorResult = {
@@ -159,7 +159,7 @@ export async function setupMonacoEditor({
 
   const registerCodeActionProvider = buildRegisterCodeActionProvider(
     standaloneEditor,
-    language
+    language,
   );
   const result: MonacoEditorResult = {
     setModelLanguage: (lang) => {
@@ -200,20 +200,20 @@ export async function setupMonacoEditor({
   /** Update markers */
   function updateMarkers(
     editor: MonacoEditor.IStandaloneCodeEditor,
-    markers: MonacoEditor.IMarkerData[]
+    markers: MonacoEditor.IMarkerData[],
   ) {
     const model = editor.getModel()!;
     const id = editor.getId();
     monaco.editor.setModelMarkers(
       model,
       id,
-      JSON.parse(JSON.stringify(markers)) as MonacoEditor.IMarkerData[]
+      JSON.parse(JSON.stringify(markers)) as MonacoEditor.IMarkerData[],
     );
   }
 
   function buildRegisterCodeActionProvider(
     editor: MonacoEditor.IStandaloneCodeEditor,
-    initLanguage: string
+    initLanguage: string,
   ): {
     setLanguage: (lang: string) => void;
     register: (provideCodeActions: ProvideCodeActions) => void;
