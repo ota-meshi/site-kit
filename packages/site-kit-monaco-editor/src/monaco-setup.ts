@@ -67,11 +67,13 @@ export async function setupMonacoEditor({
     renderValidationDecorations: "on" as const,
     renderWhitespace: "boundary" as const,
     scrollBeyondLastLine: false,
+    renderSideBySideInlineBreakpoint: 600,
   };
 
   if (useDiffEditor) {
     const diffEditor = monaco.editor.createDiffEditor(rootElement, {
       originalEditable: true,
+      useInlineViewWhenSpaceIsLimited: false,
       ...options,
     });
     const original = monaco.editor.createModel(init.value, language);

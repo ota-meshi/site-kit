@@ -245,7 +245,11 @@ defineExpose({
           props.modelValue
         }}</code>
         <Transition name="site-kit-monaco-editor-fade">
-          <div key="loading" class="site-kit-monaco-editor-placeholder-loading">
+          <div
+            v-if="loading"
+            key="loading"
+            class="site-kit-monaco-editor-placeholder-loading"
+          >
             <div class="site-kit-monaco-editor-placeholder-loading-icon">
               <div />
               <div />
