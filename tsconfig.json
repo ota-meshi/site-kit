@@ -10,12 +10,13 @@
     "sourceMap": true,
     "strict": true,
 
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
+    // "importsNotUsedAsValues": "error",
+    // "preserveValueImports": true,
     "isolatedModules": true,
-    "preserveValueImports": true,
     "lib": ["esnext", "DOM", "DOM.Iterable"],
     "moduleResolution": "NodeNext",
-    "module": "esnext",
+    "module": "NodeNext",
     "target": "esnext"
   },
   "exclude": [
