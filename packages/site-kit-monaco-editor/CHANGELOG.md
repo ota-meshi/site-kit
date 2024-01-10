@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.4.2
+
+### Patch Changes
+
+- [#60](https://github.com/ota-meshi/site-kit/pull/60) [`cdf4c15`](https://github.com/ota-meshi/site-kit/commit/cdf4c15806c75f74e4929cc19ad033d06e7ab9b0) Thanks [@ota-meshi](https://github.com/ota-meshi)! - Turn off useInlineViewWhenSpaceIsLimited option in monaco diff editor
+
 ## 0.4.1
 
 ### Patch Changes
