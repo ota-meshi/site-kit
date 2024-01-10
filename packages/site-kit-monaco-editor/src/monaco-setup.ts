@@ -73,6 +73,7 @@ export async function setupMonacoEditor({
   if (useDiffEditor) {
     const diffEditor = monaco.editor.createDiffEditor(rootElement, {
       originalEditable: true,
+      useInlineViewWhenSpaceIsLimited: false,
       ...options,
     });
     const original = monaco.editor.createModel(init.value, language);
