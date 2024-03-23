@@ -51,29 +51,32 @@ export async function setupMonacoEditor({
   const monaco = await loadMonacoEditor();
   const language = init.language;
 
-  const options = {
+  const options: MonacoEditor.IStandaloneEditorConstructionOptions = {
     value: init.value,
     readOnly: init.readOnly,
     theme: "vs-dark",
     language,
     automaticLayout: true,
     fontSize: 14,
-    // tabSize: 2,
+    fontFamily:
+      'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
     minimap: {
       enabled: false,
     },
     renderControlCharacters: true,
-    renderIndentGuides: true,
+    guides: {
+      indentation: true,
+    },
     renderValidationDecorations: "on" as const,
     renderWhitespace: "boundary" as const,
     scrollBeyondLastLine: false,
-    renderSideBySideInlineBreakpoint: 600,
   };
 
   if (useDiffEditor) {
     const diffEditor = monaco.editor.createDiffEditor(rootElement, {
       originalEditable: true,
       useInlineViewWhenSpaceIsLimited: false,
+      renderSideBySideInlineBreakpoint: 600,
       ...options,
     });
     const original = monaco.editor.createModel(init.value, language);
