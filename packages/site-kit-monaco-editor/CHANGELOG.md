@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.4.3
+
+### Patch Changes
+
+- [#68](https://github.com/ota-meshi/site-kit/pull/68) [`3a37dbd`](https://github.com/ota-meshi/site-kit/commit/3a37dbd209b714c83643cb5918fef30d596c9bb2) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: change editor constructor options
+
 ## 0.4.2
 
 ### Patch Changes
