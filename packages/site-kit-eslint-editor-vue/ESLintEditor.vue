@@ -80,7 +80,7 @@ const props = withDefaults(
   defineProps<{
     linter?: Linter | Promise<Linter> | null;
     code?: string;
-    config?: Linter.Config;
+    config?: Linter.Config | Linter.FlatConfig | Linter.FlatConfig[];
     filename?: string;
     preprocess?: (
       text: string,
@@ -277,7 +277,7 @@ function lint() {
   };
   // Lint
   try {
-    messages.value = linterRef.value.verify(code, config, options);
+    messages.value = linterRef.value.verify(code, config as never, options);
   } catch (err) {
     messages.value = [
       {
@@ -293,7 +293,7 @@ function lint() {
 
   // Fix
   try {
-    const ret = linterRef.value.verifyAndFix(code, config, options);
+    const ret = linterRef.value.verifyAndFix(code, config as never, options);
     fixedCode.value = ret.fixed ? ret.output : code;
     fixedMessages.value = ret.messages;
   } catch (err) {
@@ -325,19 +325,54 @@ function lint() {
   }
 }
 
+// eslint-disable-next-line complexity -- ignore
+function getRuleDocUrl(ruleId: string): string | null {
+  try {
+    const rule = linterRef.value?.getRules().get(ruleId);
+    return (rule && rule.meta && rule.meta.docs && rule.meta.docs.url) || null;
+  } catch {
+    // ignore
+  }
+  if (!ruleId.includes("/")) {
+    return `https://eslint.org/docs/rules/${ruleId}`;
+  }
+  const pluginKey = ruleId.split("/")[0];
+  for (const config of [props.config].flat()) {
+    if (
+      config &&
+      config.plugins &&
+      typeof config.plugins === "object" &&
+      !Array.isArray(config.plugins)
+    ) {
+      for (const [pluginId, plugin] of Object.entries(config.plugins)) {
+        const pluginName = pluginId
+          .replace(/^eslint-plugin-/u, "")
+          .replace(/\/eslint-plugin$/u, "")
+          .replace(/\/eslint-plugin-/u, "/");
+        if (!ruleId.startsWith(`${pluginName}/`)) {
+          continue;
+        }
+        const pluginRuleName = ruleId.slice(pluginName.length + 1);
+        const rule = plugin.rules?.[pluginRuleName];
+        if (rule && typeof rule !== "function" && rule?.meta?.docs?.url) {
+          return rule.meta.docs.url;
+        }
+      }
+    }
+  }
+  return null;
+}
+
 /** Linter message to monaco editor marker */
 function messageToMarker(message: Linter.LintMessage): TEditor.IMarkerData {
-  const rule =
-    message.ruleId && linterRef.value?.getRules().get(message.ruleId);
-  const docUrl =
-    rule && rule.meta && rule.meta.docs && (rule.meta.docs.url as never);
+  const docUrl = message.ruleId && getRuleDocUrl(message.ruleId);
   const startLineNumber = ensurePositiveInt(message.line, 1);
   const startColumn = ensurePositiveInt(message.column, 1);
   const endLineNumber = ensurePositiveInt(message.endLine, startLineNumber);
   const endColumn = ensurePositiveInt(message.endColumn, startColumn + 1);
 
   const code = docUrl
-    ? { value: message.ruleId!, link: docUrl, target: docUrl }
+    ? { value: message.ruleId!, link: docUrl, target: docUrl as never }
     : message.ruleId || "FATAL";
 
   return {
