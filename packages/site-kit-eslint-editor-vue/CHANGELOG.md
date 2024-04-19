@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-eslint-editor-vue
 
+## 0.2.0
+
+### Minor Changes
+
+- [#75](https://github.com/ota-meshi/site-kit/pull/75) [`c447eae`](https://github.com/ota-meshi/site-kit/commit/c447eaead3eb968f3cceae6f0b52d760054c306b) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat add support for flat linter to ESLintEditor.vue
+
 ## 0.1.2
 
 ### Patch Changes
