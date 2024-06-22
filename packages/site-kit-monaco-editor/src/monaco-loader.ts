@@ -22,14 +22,38 @@ async function setupMonaco(): Promise<void> {
   }
 }
 
-function appendMonacoEditorScript(): Promise<HTMLScriptElement> {
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    if (typeof MONACO_EDITOR_VERSION !== "undefined") {
-      script.src = `https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/${MONACO_EDITOR_VERSION}/min/vs/loader.min.js`;
-    } else {
-      script.src = "https://unpkg.com/monaco-editor@latest/min/vs/loader.js";
+async function appendMonacoEditorScript(): Promise<HTMLScriptElement> {
+  let error = new Error();
+  const urlList = [
+    "https://cdn.jsdelivr.net/npm/monaco-editor/dev/vs/loader.min.js",
+    "https://unpkg.com/monaco-editor@latest/min/vs/loader.js",
+  ];
+
+  if (typeof MONACO_EDITOR_VERSION !== "undefined") {
+    urlList.unshift(
+      `https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/${MONACO_EDITOR_VERSION}/min/vs/loader.min.js`,
+      `https://cdn.jsdelivr.net/npm/monaco-editor@${MONACO_EDITOR_VERSION}/dev/vs/loader.min.js`,
+      `https://unpkg.com/monaco-editor/${MONACO_EDITOR_VERSION}/min/vs/loader.min.js`,
+    );
+  }
+  for (const url of urlList) {
+    try {
+      return await appendScript(url);
+    } catch (e: unknown) {
+      // eslint-disable-next-line no-console -- OK
+      console.warn(`Failed to retrieve resource from ${url}`);
+      error = e as Error;
     }
+  }
+  throw error;
+}
+
+/** Appends a script tag. */
+async function appendScript(src: string): Promise<HTMLScriptElement> {
+  const script = document.createElement("script");
+
+  return new Promise((resolve, reject) => {
+    script.src = src;
     script.onload = () => {
       script.onload = null;
 
@@ -39,10 +63,16 @@ function appendMonacoEditorScript(): Promise<HTMLScriptElement> {
         // @ts-expect-error -- global Monaco's require
         if (window.require) {
           resolve(script);
+
           return;
         }
+
         setTimeout(watch, 200);
       }
+    };
+    script.onerror = (e) => {
+      reject(e);
+      document.head.removeChild(script);
     };
     document.head.append(script);
   });

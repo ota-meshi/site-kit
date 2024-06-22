@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue2": "^2.0.1",
-    "vue": "^2.7"
+    "vue": "^2.7",
+    "source-map": "^0.7.4"
   }
 }
