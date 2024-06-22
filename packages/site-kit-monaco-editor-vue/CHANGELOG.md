@@ -1,5 +1,12 @@
 # @ota-meshi/site-kit-monaco-editor-vue
 
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies [[`79b79f8`](https://github.com/ota-meshi/site-kit/commit/79b79f8feb1b8165ac01f4046687010b73155c62)]:
+  - @ota-meshi/site-kit-monaco-editor@0.5.0
+
 ## 0.2.2
 
 ### Patch Changes
