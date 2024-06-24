@@ -60,6 +60,6 @@
     "vue": "^3.2.45",
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^2.0.21",
-    "@volar/language-core": "2.3.0"
+    "@volar/language-core": "2.3.3"
   }
 }
