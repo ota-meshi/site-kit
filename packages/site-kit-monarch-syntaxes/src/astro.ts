@@ -3,14 +3,16 @@ import type {
   LanguageConfiguration,
   Monaco,
 } from "./types.js";
+import { registerLanguage } from "./utils/register-language.js";
 
 export function setupAstroLanguage(monaco: Monaco): void {
-  monaco.languages.register({ id: "astro" });
-  monaco.languages.setMonarchTokensProvider("astro", loadAstroLanguage());
-  loadAstroLanguageConfig().then((conf) => {
-    monaco.languages.setLanguageConfiguration("astro", conf);
+  registerLanguage(monaco, {
+    language: { id: "astro" },
+    loadLang: loadAstroLanguage,
+    loadConfig: loadAstroLanguageConfig,
   });
 }
+
 export async function loadAstroLanguage(): Promise<IMonarchLanguage> {
   const { language } = await import("./languages/astro.js");
   return language;
