@@ -3,12 +3,13 @@ import type {
   LanguageConfiguration,
   Monaco,
 } from "./types.js";
+import { registerLanguage } from "./utils/register-language.js";
 
 export function setupStylusLanguage(monaco: Monaco): void {
-  monaco.languages.register({ id: "stylus", aliases: ["styl"] });
-  monaco.languages.setMonarchTokensProvider("stylus", loadStylusLanguage());
-  loadStylusLanguageConfig().then((conf) => {
-    monaco.languages.setLanguageConfiguration("stylus", conf);
+  registerLanguage(monaco, {
+    language: { id: "stylus", aliases: ["styl"] },
+    loadLang: loadStylusLanguage,
+    loadConfig: loadStylusLanguageConfig,
   });
 }
 export async function loadStylusLanguage(): Promise<IMonarchLanguage> {

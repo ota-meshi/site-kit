@@ -3,12 +3,13 @@ import type {
   LanguageConfiguration,
   Monaco,
 } from "./types.js";
+import { registerLanguage } from "./utils/register-language.js";
 
 export function setupTomlLanguage(monaco: Monaco): void {
-  monaco.languages.register({ id: "toml" });
-  monaco.languages.setMonarchTokensProvider("toml", loadTomlLanguage());
-  loadTomlLanguageConfig().then((conf) => {
-    monaco.languages.setLanguageConfiguration("toml", conf);
+  registerLanguage(monaco, {
+    language: { id: "toml" },
+    loadLang: loadTomlLanguage,
+    loadConfig: loadTomlLanguageConfig,
   });
 }
 export async function loadTomlLanguage(): Promise<IMonarchLanguage> {

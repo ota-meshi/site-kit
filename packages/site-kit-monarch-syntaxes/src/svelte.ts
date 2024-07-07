@@ -3,12 +3,13 @@ import type {
   LanguageConfiguration,
   Monaco,
 } from "./types.js";
+import { registerLanguage } from "./utils/register-language.js";
 
 export function setupSvelteLanguage(monaco: Monaco): void {
-  monaco.languages.register({ id: "svelte" });
-  monaco.languages.setMonarchTokensProvider("svelte", loadSvelteLanguage());
-  loadSvelteLanguageConfig().then((conf) => {
-    monaco.languages.setLanguageConfiguration("svelte", conf);
+  registerLanguage(monaco, {
+    language: { id: "svelte" },
+    loadLang: loadSvelteLanguage,
+    loadConfig: loadSvelteLanguageConfig,
   });
 }
 export async function loadSvelteLanguage(): Promise<IMonarchLanguage> {
