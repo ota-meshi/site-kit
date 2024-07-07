@@ -1,5 +1,5 @@
-import type { IMonarchLanguage } from "../types.js";
-export const language: IMonarchLanguage = {
+import type { languages } from "monaco-editor";
+export const language: languages.IMonarchLanguage = {
   defaultToken: "",
   tokenPostfix: ".svelte",
   ignoreCase: true,
