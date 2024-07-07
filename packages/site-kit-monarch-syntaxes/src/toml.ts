@@ -7,7 +7,7 @@ import { registerLanguage } from "./utils/register-language.js";
 
 export function setupTomlLanguage(monaco: Monaco): void {
   registerLanguage(monaco, {
-    language: { id: "toml" },
+    language: { id: "toml", extensions: [".toml"] },
     loadLang: loadTomlLanguage,
     loadConfig: loadTomlLanguageConfig,
   });

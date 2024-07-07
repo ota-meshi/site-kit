@@ -5,7 +5,9 @@ import type {
   Monaco,
 } from "../types.js";
 type LanguageDefinition = {
-  language: ILanguageExtensionPoint;
+  language: ILanguageExtensionPoint & {
+    extensions: string[];
+  };
   loadLang: () => IMonarchLanguage | Promise<IMonarchLanguage>;
   loadConfig: () => LanguageConfiguration | Promise<LanguageConfiguration>;
 };
