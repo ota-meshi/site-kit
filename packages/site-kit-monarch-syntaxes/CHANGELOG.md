@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monarch-syntaxes
 
+## 0.7.0
+
+### Minor Changes
+
+- [#93](https://github.com/ota-meshi/site-kit/pull/93) [`d88fb37`](https://github.com/ota-meshi/site-kit/commit/d88fb37bbdf65073550d202408739bb8a4022a6a) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: add extensions
+
 ## 0.6.0
 
 ### Minor Changes
