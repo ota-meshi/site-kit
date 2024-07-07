@@ -124,6 +124,11 @@ function setupEnhancedLanguages(monaco: Monaco) {
       return language.loadAstroLanguage();
     },
   });
+  monaco.languages.setLanguageConfiguration("astro", {
+    comments: {
+      blockComment: ["<!--", "-->"],
+    },
+  });
   monaco.languages.register({ id: "stylus", aliases: ["styl"] });
   monaco.languages.registerTokensProviderFactory("stylus", {
     async create() {
@@ -134,6 +139,12 @@ function setupEnhancedLanguages(monaco: Monaco) {
         "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/stylus",
       )) as Lang;
       return language.loadStylusLanguage();
+    },
+  });
+  monaco.languages.setLanguageConfiguration("stylus", {
+    comments: {
+      lineComment: "//",
+      blockComment: ["/*", "*/"],
     },
   });
   monaco.languages.register({ id: "svelte" });
@@ -148,6 +159,11 @@ function setupEnhancedLanguages(monaco: Monaco) {
       return language.loadSvelteLanguage();
     },
   });
+  monaco.languages.setLanguageConfiguration("svelte", {
+    comments: {
+      blockComment: ["<!--", "-->"],
+    },
+  });
   monaco.languages.register({ id: "toml" });
   monaco.languages.registerTokensProviderFactory("toml", {
     async create() {
@@ -159,5 +175,18 @@ function setupEnhancedLanguages(monaco: Monaco) {
       )) as Lang;
       return language.loadTomlLanguage();
     },
+  });
+  monaco.languages.setLanguageConfiguration("toml", {
+    comments: {
+      lineComment: "#",
+    },
+    brackets: [
+      ["{", "}"],
+      ["[", "]"],
+    ],
+    autoClosingPairs: [
+      { open: "{", close: "}" },
+      { open: "[", close: "]" },
+    ],
   });
 }
