@@ -11,10 +11,9 @@ async function setupMonaco(): Promise<void> {
           script.src.includes("monaco") &&
           script.src.includes("vs/loader"),
       ) || (await appendMonacoEditorScript());
-    /* eslint-disable @typescript-eslint/no-unsafe-call -- global Monaco's require */
+
     // @ts-expect-error -- global Monaco's require
     window.require.config({
-      /* eslint-enable @typescript-eslint/no-unsafe-call -- global Monaco's require */
       paths: {
         vs: monacoScript.src.replace(/\/vs\/.*$/u, "/vs"),
       },
@@ -40,7 +39,6 @@ async function appendMonacoEditorScript(): Promise<HTMLScriptElement> {
     try {
       return await appendScript(url);
     } catch (e: unknown) {
-      // eslint-disable-next-line no-console -- OK
       console.warn(`Failed to retrieve resource from ${url}`);
       error = e as Error;
     }
@@ -110,7 +108,6 @@ export async function loadModuleFromMonaco<T>(moduleName: string): Promise<T> {
 }
 
 function setupEnhancedLanguages(monaco: Monaco) {
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval -- avoid transpile
   const dynamicImport = new Function("file", "return import(file)");
   monaco.languages.register({ id: "astro" });
   monaco.languages.registerTokensProviderFactory("astro", {
