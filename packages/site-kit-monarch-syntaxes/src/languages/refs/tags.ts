@@ -113,3 +113,21 @@ export const tagKeywords = [
   "var",
   "video",
 ];
+export const EMPTY_ELEMENTS = [
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "keygen",
+  "link",
+  "menuitem",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr",
+];

@@ -1,4 +1,17 @@
-import type { IMonarchLanguage } from "../types.js";
+import type { IMonarchLanguage, LanguageConfiguration } from "../types.js";
+export const config: LanguageConfiguration = {
+  comments: {
+    lineComment: "#",
+  },
+  brackets: [
+    ["{", "}"],
+    ["[", "]"],
+  ],
+  autoClosingPairs: [
+    { open: "{", close: "}" },
+    { open: "[", close: "]" },
+  ],
+};
 export const language: IMonarchLanguage = {
   tokenPostfix: ".toml",
   brackets: [
