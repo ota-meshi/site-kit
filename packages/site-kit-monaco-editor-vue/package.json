@@ -1,6 +1,6 @@
 {
   "name": "@ota-meshi/site-kit-monaco-editor-vue",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "",
   "main": "MonacoEditor.vue",
   "types": "MonacoEditor.vue.d.ts",
@@ -32,6 +32,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@ota-meshi/site-kit-monaco-editor": "^0.6.0"
+    "@ota-meshi/site-kit-monaco-editor": "^0.7.0"
   }
 }

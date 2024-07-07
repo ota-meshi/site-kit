@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.7.0
+
+### Minor Changes
+
+- [#89](https://github.com/ota-meshi/site-kit/pull/89) [`1395606`](https://github.com/ota-meshi/site-kit/commit/1395606c0566d16cfd8364ec0f47e03457d00cc1) Thanks [@ota-meshi](https://github.com/ota-meshi)! - minor refactor
+
 ## 0.6.0
 
 ### Minor Changes
