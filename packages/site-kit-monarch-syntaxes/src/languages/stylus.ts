@@ -1,5 +1,11 @@
-import type { IMonarchLanguage } from "../types.js";
+import type { IMonarchLanguage, LanguageConfiguration } from "../types.js";
 import { tagKeywords } from "./refs/tags.js";
+export const config: LanguageConfiguration = {
+  comments: {
+    lineComment: "//",
+    blockComment: ["/*", "*/"],
+  },
+};
 export const language: IMonarchLanguage = {
   tagKeywords,
   keywords: [

@@ -1,4 +1,4 @@
-import type { Monaco } from "./types.js";
+import type { Monaco, MonacoEditorLanguages } from "./types.js";
 
 declare let MONACO_EDITOR_VERSION: string | undefined;
 
@@ -109,81 +109,101 @@ export async function loadModuleFromMonaco<T>(moduleName: string): Promise<T> {
 
 function setupEnhancedLanguages(monaco: Monaco) {
   const dynamicImport = new Function("file", "return import(file)");
-  monaco.languages.register({ id: "astro" });
-  monaco.languages.registerTokensProviderFactory("astro", {
-    async create() {
+  registerLanguage(monaco, {
+    id: "astro",
+    loader: async () => {
       type Lang =
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/astro");
-      const language = (await dynamicImport(
+      return (await dynamicImport(
         "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/astro",
       )) as Lang;
-      return language.loadAstroLanguage();
+    },
+    loadLang: (mod) => {
+      return mod.loadAstroLanguage();
+    },
+    loadConfig: (mod) => {
+      return mod.loadAstroLanguageConfig();
     },
   });
-  monaco.languages.setLanguageConfiguration("astro", {
-    comments: {
-      blockComment: ["<!--", "-->"],
-    },
-  });
-  monaco.languages.register({ id: "stylus", aliases: ["styl"] });
-  monaco.languages.registerTokensProviderFactory("stylus", {
-    async create() {
+  registerLanguage(monaco, {
+    id: "stylus",
+    aliases: ["styl"],
+    loader: async () => {
       type Lang =
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/stylus");
-      const language = (await dynamicImport(
+      return (await dynamicImport(
         "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/stylus",
       )) as Lang;
-      return language.loadStylusLanguage();
+    },
+    loadLang: (mod) => {
+      return mod.loadStylusLanguage();
+    },
+    loadConfig: (mod) => {
+      return mod.loadStylusLanguageConfig();
     },
   });
-  monaco.languages.setLanguageConfiguration("stylus", {
-    comments: {
-      lineComment: "//",
-      blockComment: ["/*", "*/"],
-    },
-  });
-  monaco.languages.register({ id: "svelte" });
-  monaco.languages.registerTokensProviderFactory("svelte", {
-    async create() {
+  registerLanguage(monaco, {
+    id: "svelte",
+    loader: async () => {
       type Lang =
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/svelte");
-      const language = (await dynamicImport(
+      return (await dynamicImport(
         "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/svelte",
       )) as Lang;
-      return language.loadSvelteLanguage();
+    },
+    loadLang: (mod) => {
+      return mod.loadSvelteLanguage();
+    },
+    loadConfig: (mod) => {
+      return mod.loadSvelteLanguageConfig();
     },
   });
-  monaco.languages.setLanguageConfiguration("svelte", {
-    comments: {
-      blockComment: ["<!--", "-->"],
-    },
-  });
-  monaco.languages.register({ id: "toml" });
-  monaco.languages.registerTokensProviderFactory("toml", {
-    async create() {
+  registerLanguage(monaco, {
+    id: "toml",
+    loader: async () => {
       type Lang =
         // eslint-disable-next-line @typescript-eslint/consistent-type-imports -- ignore
         typeof import("@ota-meshi/site-kit-monarch-syntaxes/toml");
-      const language = (await dynamicImport(
+      return (await dynamicImport(
         "https://cdn.skypack.dev/@ota-meshi/site-kit-monarch-syntaxes/toml",
       )) as Lang;
-      return language.loadTomlLanguage();
+    },
+    loadLang: (mod) => {
+      return mod.loadTomlLanguage();
+    },
+    loadConfig: (mod) => {
+      return mod.loadTomlLanguageConfig();
     },
   });
-  monaco.languages.setLanguageConfiguration("toml", {
-    comments: {
-      lineComment: "#",
+}
+
+type IMonarchLanguage = MonacoEditorLanguages.IMonarchLanguage;
+type LanguageConfiguration = MonacoEditorLanguages.LanguageConfiguration;
+type LanguageDefinition<M> = {
+  id: string;
+  aliases?: string[];
+  loader: () => Promise<M>;
+  loadLang: (mod: M) => Promise<IMonarchLanguage>;
+  loadConfig: (
+    mod: M,
+  ) => LanguageConfiguration | Promise<LanguageConfiguration>;
+};
+
+function registerLanguage<M>(monaco: Monaco, def: LanguageDefinition<M>) {
+  const { id: languageId, aliases, loader, loadLang, loadConfig } = def;
+  monaco.languages.register({ id: languageId, aliases });
+  monaco.languages.registerTokensProviderFactory(languageId, {
+    async create() {
+      const mod = await loader();
+      return loadLang(mod);
     },
-    brackets: [
-      ["{", "}"],
-      ["[", "]"],
-    ],
-    autoClosingPairs: [
-      { open: "{", close: "}" },
-      { open: "[", close: "]" },
-    ],
+  });
+  monaco.languages.onLanguageEncountered(languageId, async () => {
+    const mod = await loader();
+    const conf = await loadConfig(mod);
+    monaco.languages.setLanguageConfiguration(languageId, conf);
   });
 }
