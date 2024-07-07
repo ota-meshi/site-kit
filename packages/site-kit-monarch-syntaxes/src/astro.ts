@@ -7,7 +7,7 @@ import { registerLanguage } from "./utils/register-language.js";
 
 export function setupAstroLanguage(monaco: Monaco): void {
   registerLanguage(monaco, {
-    language: { id: "astro" },
+    language: { id: "astro", extensions: [".astro"] },
     loadLang: loadAstroLanguage,
     loadConfig: loadAstroLanguageConfig,
   });

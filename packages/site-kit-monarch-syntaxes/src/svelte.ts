@@ -7,7 +7,7 @@ import { registerLanguage } from "./utils/register-language.js";
 
 export function setupSvelteLanguage(monaco: Monaco): void {
   registerLanguage(monaco, {
-    language: { id: "svelte" },
+    language: { id: "svelte", extensions: [".svelte"] },
     loadLang: loadSvelteLanguage,
     loadConfig: loadSvelteLanguageConfig,
   });

@@ -7,7 +7,11 @@ import { registerLanguage } from "./utils/register-language.js";
 
 export function setupStylusLanguage(monaco: Monaco): void {
   registerLanguage(monaco, {
-    language: { id: "stylus", aliases: ["styl"] },
+    language: {
+      id: "stylus",
+      aliases: ["styl"],
+      extensions: [".stylus", ".styl"],
+    },
     loadLang: loadStylusLanguage,
     loadConfig: loadStylusLanguageConfig,
   });
