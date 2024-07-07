@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.6.0
+
+### Minor Changes
+
+- [#86](https://github.com/ota-meshi/site-kit/pull/86) [`72f04d4`](https://github.com/ota-meshi/site-kit/commit/72f04d4ef794075fe7621b8edffa150a13b7865c) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: add monaco language configuration
+
 ## 0.5.0
 
 ### Minor Changes
