@@ -1,5 +1,12 @@
 # @ota-meshi/site-kit-monaco-editor-svelte
 
+## 0.1.8
+
+### Patch Changes
+
+- Updated dependencies [[`1395606`](https://github.com/ota-meshi/site-kit/commit/1395606c0566d16cfd8364ec0f47e03457d00cc1)]:
+  - @ota-meshi/site-kit-monaco-editor@0.7.0
+
 ## 0.1.7
 
 ### Patch Changes

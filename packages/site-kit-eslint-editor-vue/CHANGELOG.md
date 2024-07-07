@@ -1,5 +1,13 @@
 # @ota-meshi/site-kit-eslint-editor-vue
 
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies [[`1395606`](https://github.com/ota-meshi/site-kit/commit/1395606c0566d16cfd8364ec0f47e03457d00cc1)]:
+  - @ota-meshi/site-kit-monaco-editor@0.7.0
+  - @ota-meshi/site-kit-monaco-editor-vue@0.2.5
+
 ## 0.2.2
 
 ### Patch Changes

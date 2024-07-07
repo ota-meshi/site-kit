@@ -1,6 +1,6 @@
 {
   "name": "@ota-meshi/site-kit-monaco-editor-svelte",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
   "main": "MonacoEditor.svelte",
   "type": "module",
@@ -24,6 +24,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@ota-meshi/site-kit-monaco-editor": "^0.6.0"
+    "@ota-meshi/site-kit-monaco-editor": "^0.7.0"
   }
 }
