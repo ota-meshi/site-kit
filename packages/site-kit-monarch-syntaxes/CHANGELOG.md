@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monarch-syntaxes
 
+## 0.7.2
+
+### Patch Changes
+
+- [#97](https://github.com/ota-meshi/site-kit/pull/97) [`a3df3dd`](https://github.com/ota-meshi/site-kit/commit/a3df3dde69f3e0bc51a096dccbfeee27e4939c32) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: syntax highlighting issue
+
 ## 0.7.1
 
 ### Patch Changes

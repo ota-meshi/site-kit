@@ -1,6 +1,6 @@
 {
   "name": "@ota-meshi/site-kit-monarch-syntaxes",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "",
   "type": "module",
   "main": "./lib/index.mjs",
