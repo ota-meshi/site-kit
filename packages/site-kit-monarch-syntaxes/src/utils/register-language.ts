@@ -34,15 +34,9 @@ export function registerLanguage(
   } else {
     const lang = loadLang();
     const config = Promise.resolve(loadConfig());
-    monaco.languages.setMonarchTokensProvider(languageId, lang);
-    Promise.all([lang, config])
-      .then(([, conf]) => {
-        monaco.languages.setLanguageConfiguration(languageId, conf);
-      })
-      .then(() => {
-        for (const model of models) {
-          monaco.editor.setModelLanguage(model, languageId);
-        }
-      });
+    Promise.all([lang, config]).then(([l, c]) => {
+      monaco.languages.setMonarchTokensProvider(languageId, l);
+      monaco.languages.setLanguageConfiguration(languageId, c);
+    });
   }
 }
