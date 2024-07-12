@@ -25,4 +25,14 @@ export function registerLanguage(
     const conf = await loadConfig();
     monaco.languages.setLanguageConfiguration(languageId, conf);
   });
+  if (
+    monaco.editor
+      .getModels()
+      .some((model) => model.getLanguageId() === languageId)
+  ) {
+    monaco.languages.setMonarchTokensProvider(languageId, loadLang());
+    Promise.resolve(loadConfig()).then((conf) => {
+      monaco.languages.setLanguageConfiguration(languageId, conf);
+    });
+  }
 }
