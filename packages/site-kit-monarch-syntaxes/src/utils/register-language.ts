@@ -17,11 +17,11 @@ export function registerLanguage(
 ): void {
   const { language, loadLang, loadConfig } = def;
   const languageId = language.id;
+  monaco.languages.register(language);
+
   const models = monaco.editor
     .getModels()
     .filter((model) => model.getLanguageId() === languageId);
-
-  monaco.languages.register(language);
 
   if (!models.length) {
     monaco.languages.registerTokensProviderFactory(languageId, {
