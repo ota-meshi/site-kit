@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monarch-syntaxes
 
+## 0.7.1
+
+### Patch Changes
+
+- [#95](https://github.com/ota-meshi/site-kit/pull/95) [`062eaf7`](https://github.com/ota-meshi/site-kit/commit/062eaf7a764740a07fbc407c6f684e8eab9e64ac) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: where syntax was not valid
+
 ## 0.7.0
 
 ### Minor Changes
