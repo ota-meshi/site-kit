@@ -56,7 +56,7 @@
     "typescript-eslint": "^8.0.0",
     "typescript-eslint-parser-for-extra-files": "^0.7.0",
     "unbuild": "^3.0.0",
-    "vite": "^5.0.0",
+    "vite": "^6.0.0",
     "vue": "^3.2.45",
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^2.0.21"
