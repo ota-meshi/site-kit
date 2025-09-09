@@ -1,5 +1,11 @@
 # @ota-meshi/site-kit-monaco-editor
 
+## 0.8.1
+
+### Patch Changes
+
+- [#132](https://github.com/ota-meshi/site-kit/pull/132) [`d18dcf3`](https://github.com/ota-meshi/site-kit/commit/d18dcf3d4459f192dd837c2e8bfb9a2c281a2244) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix(site-kit-monaco-editor): support monaco 0.53.0 export name
+
 ## 0.8.0
 
 ### Minor Changes
