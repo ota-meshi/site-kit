@@ -87,7 +87,12 @@ export function loadMonacoEditor(): Promise<Monaco> {
     return editorLoaded;
   }
   return (editorLoaded = (async () => {
-    const monaco: Monaco = await loadModuleFromMonaco("vs/editor/editor.main");
+    let monaco: Monaco = await loadModuleFromMonaco("vs/editor/editor.main");
+
+    if ((monaco as any).m) {
+      // If Monaco 0.53.0 export name (`m`) is available, use it.
+      monaco = (monaco as any).m;
+    }
 
     setupEnhancedLanguages(monaco);
 
